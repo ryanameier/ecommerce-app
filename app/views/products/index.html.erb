@@ -10,7 +10,7 @@
 <td>    <%=products.id %> </td>
 <td> <a href="/show/<%=products.id%>"><%=products.name %></a></td>
 <td>    <%=products.price %> </td>
-<td>   <%=products.image %>   </td>
+   <td><img src= <%= products.image %> class="img-responsive" alt= <%= products.name %> width= 50px height= 50px></td>
 <td><%=products.description %></td>
 
 </tr>
