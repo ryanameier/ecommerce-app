@@ -1,0 +1,16 @@
+<table class="table table-striped">
+<th>Name</th>
+<th>Price</th>
+<th>Image</th>
+<th>Description</th>
+
+<% @all_products.each do |products|  %>
+<tr>
+<td><%=products.name %> </td>
+<td>    <%=products.price %> </td>
+<td>   <%=products.image %>   </td>
+<td><%=products.description %></td>
+
+</tr>
+<%end%>
+</table>
