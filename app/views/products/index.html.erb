@@ -1,4 +1,5 @@
 <table class="table table-striped">
+<th>ID</th>
 <th>Name</th>
 <th>Price</th>
 <th>Image</th>
@@ -6,7 +7,8 @@
 
 <% @all_products.each do |products|  %>
 <tr>
-<td><%=products.name %> </td>
+<td>    <%=products.id %> </td>
+<td> <a href="/show/<%=products.id%>"><%=products.name %></a></td>
 <td>    <%=products.price %> </td>
 <td>   <%=products.image %>   </td>
 <td><%=products.description %></td>
