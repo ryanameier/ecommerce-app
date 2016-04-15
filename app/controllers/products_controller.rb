@@ -5,4 +5,8 @@ class ProductsController < ApplicationController
   def index
   @all_products = Product.all 
  end
+ 
+ def show
+ @find_product = Product.find_by(id: params[:id]) 
+  end
 end
