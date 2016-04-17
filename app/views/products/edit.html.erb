@@ -1,0 +1,21 @@
+<h1>Updating..!</h1>
+<%= form_tag("/products/#{@products.id}", method: :patch)  do%>
+<div>
+<%= label_tag :name, "the name!"%>
+<%= text_field_tag :name, @products.name %>
+</div>
+<div>
+<%= label_tag :price, "the price" %>
+<%= text_field_tag :price, @products.price %>
+</div>
+<div>
+<%= label_tag :image, "the image" %>
+<%= text_field_tag :image, @products.image %>
+</div>
+<div>
+<%= label_tag :description, "the description" %>
+<%= text_field_tag :description, @products.description %>
+</div>
+<%= submit_tag 'Add Product', class: 'btn btn-default' %>
+
+<% end %>

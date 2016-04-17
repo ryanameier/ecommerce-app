@@ -1,5 +1,5 @@
 
-
+<a href="/products/<%= @find_product.id %>/edit">Edit</a>
 
 <table class="table table-striped">
 <th>Name</th>
@@ -15,3 +15,5 @@
 
 </tr>
 </table>
+
+<%= link_to"Delete", "/products/#{@find_product.id}",method: :delete%>
