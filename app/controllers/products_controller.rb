@@ -18,6 +18,7 @@ end
 def create
   new_product = Product.new(name: params[:name], price: params[:price], image: params[:image], description: params[:description])
   new_product.save
+  redirect_to "/products"
 end
 
 def edit
@@ -31,9 +32,13 @@ def update
   @products.image = params[:image]
   @products.description = params[:description]
    @products.save
+   flash[:success] = "Recipe updated!"
+   redirect_to "/products/#{@products.id}"
  end
+
   def destroy
    @products = Product.find_by(id: params[:id])
    @products.destroy
+   redirect_to "/products"
   end
 end
