@@ -1,20 +1,21 @@
-<table class="table table-striped">
-<th>ID</th>
-<th>Name</th>
-<th>Price</th>
-<th>Image</th>
-<th>Description</th>
 
-<% @all_products.each do |products|  %>
-<tr>
-<td>    <%=products.id %> </td>
-<td> <a href="/products/<%=products.id%>"><%=products.name %></a></td>
-<td>    <%=products.price %> </td>
-   <td><img src= <%= products.image %> class="img-responsive" alt= <%= products.name %> width= 50px height= 50px></td>
-<td><%=products.description %></td>
+<h1>All Products</h1>
 
-</tr>
-<%end%>
-</table>
-
-<a href="/products/new"> New product </a> 
+<div class="row">
+  <% @all_products.each do |product| %>
+  <div class="col-md-3">
+    <div class="thumbnail">
+      <a href="/recipes/<%= product.id %>">
+        <p><%= product.id %></p>
+        <p><%= product.name %></p>
+        <p><%= product.price %></p>
+        <p><%= product.image %></p>
+        <p><%= product.description %></p>
+        <div>
+          <img src="<%= product.image %>" width="200" height="200">
+        </div>
+      </a>
+    </div>
+  </div>
+  <% end %>
+</div>
