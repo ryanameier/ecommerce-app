@@ -17,3 +17,7 @@
 </table>
 
 <%= link_to"Delete", "/products/#{@find_product.id}",method: :delete%>
+
+<br><br><%= @find_product.sale_message %>
+<br><br><%= number_to_currency(@find_product.tax) %>
+<br><br><%= number_to_currency(@find_product.total) %>
