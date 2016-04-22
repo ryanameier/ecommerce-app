@@ -1,16 +1,29 @@
 
 <h1>All Products</h1>
 
+<a href="/products/new"> Add New Product</a><br>
+<a href="/products?sort=price"> Sort by lowest price</a><br>
+<a href="/products?sort=price desc"> Sort by highest price</a><br>
+<a href="/products?sort=discount "> Filter to items below $2</a><br>
+<a href="/products/random "> Random Product</a><br>
+
+<%= form_tag "/search", method: :post do %>
+ <%= label_tag :search %>
+  <%= text_field_tag :search %>
+   <%= submit_tag :search %>
+   <% end %>
+
 <div class="row">
   <% @all_products.each do |product| %>
   <div class="col-md-3">
     <div class="thumbnail">
       <a href="/products/<%= product.id %>">
-        <p><%= product.id %></p>
-        <p><%= product.name %></p>
-        <p><%= product.price %></p>
+      <!--   <p><%= product.id %></p> -->
+         <p><%= product.name %></p> 
+       <!--  <p><%= product.price %></p>
         <p><%= product.image %></p>
         <p><%= product.description %></p>
+        <p><%= product.stock_level %></p> -->
         <div>
           <img src="<%= product.image %>" width="200" height="200">
         </div>

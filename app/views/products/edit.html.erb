@@ -16,6 +16,10 @@
 <%= label_tag :description, "the description" %>
 <%= text_field_tag :description, @products.description %>
 </div>
+<div>
+<%= label_tag :stock_level, "the stock level" %>
+<%= text_field_tag :stock_level, @products.stock_level %>
+</div>
 <%= submit_tag 'Click to update!', class: 'btn btn-default' %>
 
 <% end %>
