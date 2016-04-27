@@ -11,7 +11,9 @@
 <tr>
 <td><%= @find_product.name %> </td>
 <td>    <%= @find_product.price %> </td>
-   <td><img src= <%= @find_product.image %> class="img-responsive" alt= <%= @find_product.name %> width= 50px height= 50px></td>
+<% @find_product.images.each do |image| %>
+   <td><img src="<%= image.image_url %>" class="img-responsive" alt= <%= @find_product.name %> width= 50px height= 50px></td>
+   <% end %>
 <td><%=@find_product.description %></td>
 <td><%=@find_product.stock_level %></td>
 
@@ -21,7 +23,7 @@
 <%= link_to"Delete", "/products/#{@find_product.id}",method: :delete%>
   
 
-
+<br><br><%= @find_product.supplier.name %>
 <br><br><%= @find_product.sale_message %>
 <br><br><%= number_to_currency(@find_product.tax) %>
 <br><br><%= number_to_currency(@find_product.total) %>

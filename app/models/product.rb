@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+   belongs_to :supplier
+   has_many :images
 
 
   def sale_message
@@ -8,8 +10,6 @@ class Product < ActiveRecord::Base
       return "On sale!"
     end
   end
-
- 
 
   def tax
     tax = price * 0.09
