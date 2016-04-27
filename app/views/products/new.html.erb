@@ -20,6 +20,9 @@
 <%= label_tag :stock_level %>
 <%= text_field_tag :stock_level %>
 </div>
+<div>
+<%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name  %>
+</div>
 <%= submit_tag 'Add Product', class: 'btn btn-default' %>
 
 <% end %>
