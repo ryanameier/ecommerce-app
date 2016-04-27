@@ -35,7 +35,7 @@ def search
 end
 
 def create
-  new_product = Product.new(name: params[:name], price: params[:price],  description: params[:description], stock_level: params[:stock_level], supplier_id: params[:supplier][:supplier_id])
+  new_product = Product.new(name: params[:name], price: params[:price],  description: params[:description], stock_level: params[:stock_level], supplier_id: params[:supplier][:supplier_id], user_id: current_user)
   new_product.save
   redirect_to "/products"
 end

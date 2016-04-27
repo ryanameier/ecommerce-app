@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
  #get "/product", to: #'products#one_product'
+ root 'products#index'
  get "/products", to: 'products#index'
  get "/products/new", to: 'products#new'
  post "/products", to: 'products#create'
