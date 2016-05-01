@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
    belongs_to :supplier
    has_many :images
    belongs_to :user
+   has_many :orders
 
 
   def sale_message
@@ -16,6 +17,10 @@ class Product < ActiveRecord::Base
     tax = price * 0.09
     return "#{tax} for tax"
   end
+
+  def subtax
+    subtax = 0.09
+    return subtax.to_i
 
   def total
     total = price * 1.09

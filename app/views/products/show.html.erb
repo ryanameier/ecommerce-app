@@ -2,27 +2,38 @@
 <a href="/products/<%= @find_product.id %>/edit">Edit</a>
 
 <table class="table table-striped">
-<th>Name</th>
-<th>Price</th>
-<th>Image</th>
-<th>Description</th>
-<th>Stock Level</th>
+  <th>Name</th>
+  <th>Price</th>
+  <th>Image</th>
+  <th>Description</th>
+  <th>Stock Level</th>
 
-<tr>
-<td><%= @find_product.name %> </td>
-<td>    <%= @find_product.price %> </td>
-<% @find_product.images.each do |image| %>
-   <td><img src="<%= image.image_url %>" class="img-responsive" alt= <%= @find_product.name %> width= 50px height= 50px></td>
-   <% end %>
-<td><%=@find_product.description %></td>
-<td><%=@find_product.stock_level %></td>
-<td><%=@find_product.user.email %></td>
+  <tr>
+    <td><%= @find_product.name %> </td>
+    <td>    <%= @find_product.price %> </td>
+    <% @find_product.images.each do |image| %>
+    <td><img src="<%= image.image_url %>" class="img-responsive" alt= <%= @find_product.name %> width= 50px height= 50px></td>
+    <% end %>
+    <td><%=@find_product.description %></td>
+    <td><%=@find_product.stock_level %></td>
+    <td><%=@find_product.user.email %></td>
 
-</tr>
+  </tr>
 </table>
 
 <%= link_to"Delete", "/products/#{@find_product.id}",method: :delete%>
-  
+
+
+<%= form_tag '/orders', method: :post do %>
+
+<%= label_tag :product_id%> 
+<%= text_field_tag :product_id %>
+<%= label_tag :quantity%> 
+<%= text_field_tag :quantity %>
+<%= submit_tag 'Buy Now', class: 'btn btn-default' %>
+
+<% end %> 
+
 
 <br><br><%= @find_product.supplier.name %>
 <br><br><%= @find_product.sale_message %>
