@@ -24,13 +24,12 @@
 <%= link_to"Delete", "/products/#{@find_product.id}",method: :delete%>
 
 
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag '/carted_products', method: :post do %>
 
 <%= label_tag :product_id%> 
-<%= text_field_tag :product_id %>
-<%= label_tag :quantity%> 
+<%= hidden_field_tag :product_id, @find_product.id, class: "form-control"  %><%= label_tag :quantity%> 
 <%= text_field_tag :quantity %>
-<%= submit_tag 'Buy Now', class: 'btn btn-default' %>
+<%= submit_tag 'Add to cart', class: 'btn btn-default' %>
 
 <% end %> 
 

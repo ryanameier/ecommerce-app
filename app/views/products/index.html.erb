@@ -7,6 +7,12 @@
 <a href="/products?sort=discount "> Filter to items below $2</a><br>
 <a href="/products/random "> Random Product</a><br>
 
+<ul>
+  <% Category.all.each do |category| %>
+    <li><%= link_to category.name, "/products?category=#{category.name}" %></li>
+  <% end %>
+</ul>
+
 <%= form_tag "/search", method: :post do %>
  <%= label_tag :search %>
   <%= text_field_tag :search %>
@@ -24,7 +30,11 @@
         <p><%= product.description %></p>
         <p><%= product.stock_level %></p> -->
         <div>
-          <img src="<%= product.images.first.image_url %>" width="200" height="200">
+          <% if product.images.first %> 
+            <img src="<%= product.images.first.image_url %>" width="200" height="200">
+            <% else %>
+            <p> Error, no image found </p>
+          <% end %>
         </div>
       </a>
     </div>

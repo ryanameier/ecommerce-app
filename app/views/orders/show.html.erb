@@ -1,17 +1,22 @@
-<p> Order Summary </p>
+<h1> Order Summary </h1>
 
-<table class="table table-striped">
- 
+<table class="table">
   <tr>
-  <th>Order Id</th>
-  <th>Order quantity</th>
-
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Individual Price</th>
+  </tr>
+  <% @order.carted_products.each do |carted_product| %>
+  <tr>
+    <td><%= carted_product.product.name %></td>
+    <td><%= carted_product.quantity %></td>
+    <td><%= carted_product.product.price %></td>
   </tr>
 
- 
-     <td><%= @find_order.id %></td>
-    <td><%= @find_order.quantity %></td>
-   
+  <% end %>
 
-  </tr>
 </table>
+
+<p>Subtotal: <%= @order.subtotal %></p>
+<p>Tax: <%= @order.tax %></p>
+<p>Total: <%= @order.total %></p>

@@ -1,8 +1,13 @@
 class Product < ActiveRecord::Base
+   belongs_to :user
    belongs_to :supplier
    has_many :images
-   belongs_to :user
-   has_many :orders
+   has_many :categorized_products
+   has_many :products, through: :categorized_products
+   has_many :carted_products
+   has_many :orders, through: :carted_products
+
+
 
 
   def sale_message
@@ -21,6 +26,7 @@ class Product < ActiveRecord::Base
   def subtax
     subtax = 0.09
     return subtax.to_i
+  end
 
   def total
     total = price * 1.09

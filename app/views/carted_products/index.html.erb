@@ -1,0 +1,18 @@
+  <table class="table">
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price per product</th>
+      <th>Remove From shopping cart</th>
+    </tr>
+    <% @order.carted_products.each do |carted_product| %>
+    <tr>
+      <td><%= carted_product.product.name%></td>
+      <td><%=carted_product.quantity%></td>
+      <td><%=carted_product.product.price%></td>
+      <td><%= link_to "Remove product", "/carted_products/#{carted_product.id}", method: :delete %></td>
+    </tr>
+    <%end%>
+  </table>
+
+  <%= link_to "Comfirm and Buy", "orders/#{@order.id}", method: :patch %>
