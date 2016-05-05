@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show, :search]
 
+
    def index
     if params[:sort]
       @all_products = Product.order(sort_choice)
@@ -20,9 +21,8 @@ class ProductsController < ApplicationController
   end
 
   def new 
-  #unless current_user && current_user.admin
-    #redirect_to "/"
-   #end
+  @product = Product.new
+  #have to do this now that the create method has turned into an instance variable
   end
 
   def search
@@ -32,10 +32,15 @@ class ProductsController < ApplicationController
   end
 
   def create
-    new_product = Product.new(name: params[:name], price: params[:price],  description: params[:description], stock_level: params[:stock_level], supplier_id: params[:supplier][:supplier_id], user_id: current_user)
-    new_product.save
-    redirect_to "/products"
+    @product = Product.new(name: params[:name], price: params[:price],  description: params[:description], stock_level: params[:stock_level], supplier_id: params[:supplier][:supplier_id], user_id: current_user)
+    if @product.save 
+      flash[:success] = "Product created!"
+      redirect_to "/products/#{@product.id}" 
+    else
+      render :new #sad path
+    end
   end
+
 
   def edit
     @products = Product.find_by(id: params[:id])

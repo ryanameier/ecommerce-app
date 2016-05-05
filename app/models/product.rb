@@ -7,7 +7,11 @@ class Product < ActiveRecord::Base
    has_many :carted_products
    has_many :orders, through: :carted_products
 
-
+   validates :name, :description, presence: true
+   validates :price, :stock_level, numericality: {only_integer: true, greater_than: 0}
+   validates :name, uniqueness: true
+   #uniquness doesnt allow for 2 items of the same name
+   #validations have to be items in your model or it will break. 
 
 
   def sale_message
